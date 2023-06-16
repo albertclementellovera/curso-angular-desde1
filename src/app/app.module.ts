@@ -7,11 +7,13 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule} from '@angular/common/http'
+import { CartComponent } from './shared/components/cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
