@@ -3,9 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {path: 'products',
-  loadChildren: () => import('./pages/products/products.module').then(module => module.ProductsModule)},
+  loadChildren: () => import('./pages/products/products.module').
+    then(module => module.ProductsModule)},
+  { path: 'checkout', loadChildren: () => import('./pages/checkout/checkout.module').
+    then(m => m.CheckoutModule) },
   {path: '', redirectTo: '/products', pathMatch: 'full' },
-  { path: 'checkout', loadChildren: () => import('./pages/checkout/checkout.module').then(m => m.CheckoutModule) }
+  {path: '**', redirectTo: '', pathMatch: 'full' }
+
 ];
 
 @NgModule({

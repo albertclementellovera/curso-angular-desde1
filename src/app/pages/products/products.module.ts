@@ -9,11 +9,11 @@ import { MaterialModule } from 'src/app/material/material.module';
   declarations: [
     ProductsComponent,
     ProductComponent
-],
+  ],
   imports: [
     CommonModule,
     ProductsRoutingModule,
-    MaterialModule,
+    MaterialModule
   ]
 })
 export class ProductsModule { }
