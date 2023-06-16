@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'curso-angular-desde0';
+
+  ngOnInit() {
+  }
 }
