@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { switchMap, tap } from 'rxjs';
+import { delay, switchMap, tap } from 'rxjs';
 import { Store } from 'src/app/shared/interfaces/stores.interface';
 import { DataService } from 'src/app/shared/services/data.service';
 import { Product } from '../products/interfaces/product.interface';
 import { Details, Order } from 'src/app/shared/interfaces/order.interface';
 import { ShoppingCartService } from './../../shared/services/shopping-cart.service';
+import { Router } from '@angular/router';
+import { ProductsService } from '../products/services/products.service';
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -18,10 +21,17 @@ export class CheckoutComponent implements OnInit{
     shippingAddress: '',
     city: ''
   };
-  isDelivery = false;
+  isDelivery = true;
   cart: Product[] = [];
   stores: Store[] = []
-  constructor(private dataSvc: DataService,private shoppingCartSvc: ShoppingCartService) {}
+  constructor(
+    private dataSvc: DataService,
+    private shoppingCartSvc: ShoppingCartService,
+    private router: Router,
+    private productsSvc: ProductsService
+  ) {
+    this.checkIfCartIsEmpty();
+  }
 
   ngOnInit(): void{
     this.getStores();
@@ -43,12 +53,14 @@ export class CheckoutComponent implements OnInit{
     this.dataSvc.saveOrder(data)
      .pipe(
         tap(res => console.log('Order ->', res)),
-        switchMap((order) => {
-          const orderId = order.id;
+        switchMap(({id:orderId}) => {
           const details = this.prepareDetails();
           return this.dataSvc.saveDetailsOrder({ details, orderId });
         }),
-        tap(res => console.log('Finish ->',res)),
+        tap(res => console.log('Order ->', res)),
+        tap(() => this.router.navigate(['/checkout/thank-you-page'])),
+        delay(2000),
+        tap(() => this.shoppingCartSvc.resetCart())
       )
       .subscribe();
   }
@@ -65,11 +77,19 @@ private getCurrentDay(): string {
     return new Date().toLocaleDateString();
   }
 
-private prepareDetails(): Details[] {
+  private prepareDetails(): Details[] {
     const details: Details[] = [];
     this.cart.forEach((product: Product) => {
       const { id: productId, name: productName, qty: quantity, stock } = product;
-      details.push({ productId, productName, quantity });
+      const updateStock = (stock - quantity);
+
+      this.productsSvc.updateStock(productId, updateStock)
+        .pipe(
+          tap(() => details.push({ productId, productName, quantity }))
+        )
+        .subscribe()
+
+
     })
     return details;
   }
@@ -78,6 +98,18 @@ private getDataCart(): void {
     this.shoppingCartSvc.cartAction$
       .pipe(
         tap((products: Product[]) => this.cart = products)
+      )
+      .subscribe()
+  }
+
+  private checkIfCartIsEmpty(): void {
+    this.shoppingCartSvc.cartAction$
+      .pipe(
+        tap((products: Product[]) => {
+          if (Array.isArray(products) && !products.length) {
+            this.router.navigate(['/products']);
+          }
+        })
       )
       .subscribe()
   }

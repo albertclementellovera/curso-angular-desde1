@@ -22,12 +22,12 @@
       name=”opciones”
       value="pickup"
       (change)="onPickupOrDelivery(false)"
-      checked
       >Pickup</mat-radio-button>
       <mat-radio-button
       name=”opciones”
       value="delivery"
       (change)="onPickupOrDelivery(true)"
+      checked
       >Delivery</mat-radio-button>
     </mat-radio-group>
     <ng-container *ngIf="isDelivery; else showStores">

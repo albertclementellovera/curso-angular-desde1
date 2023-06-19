@@ -65,7 +65,7 @@
       "price": 5,
       "description": "En Hackeando del cerebro de tus compradores, Corti nos revela cómo muchas compañías crean productos digitales o procesos de venta capaces de conectar con la psicología del comprador.",
       "categoryId": 1,
-      "stock": 10
+      "stock": 6
     },
     {
       "id": 3,
@@ -231,6 +231,167 @@
       "date": "18/6/2023",
       "isDelivery": false,
       "id": 11
+    },
+    {
+      "name": "Albert",
+      "store": "",
+      "date": "19/6/2023",
+      "isDelivery": false,
+      "id": 12
+    },
+    {
+      "name": "Albert",
+      "store": {
+        "id": 1,
+        "name": "Park Row at Beekman St",
+        "address": "38 Park Row",
+        "city": "New York",
+        "openingHours": "10:00 - 14:00 and 17:00 - 20:30"
+      },
+      "date": "19/6/2023",
+      "isDelivery": false,
+      "id": 13
+    },
+    {
+      "name": "Albert",
+      "shippingAddress": "",
+      "city": "",
+      "date": "19/6/2023",
+      "isDelivery": true,
+      "id": 14
+    },
+    {
+      "name": "Albert",
+      "store": {
+        "id": 1,
+        "name": "Park Row at Beekman St",
+        "address": "38 Park Row",
+        "city": "New York",
+        "openingHours": "10:00 - 14:00 and 17:00 - 20:30"
+      },
+      "date": "19/6/2023",
+      "isDelivery": false,
+      "id": 15
+    },
+    {
+      "name": "Albert",
+      "store": {
+        "id": 1,
+        "name": "Park Row at Beekman St",
+        "address": "38 Park Row",
+        "city": "New York",
+        "openingHours": "10:00 - 14:00 and 17:00 - 20:30"
+      },
+      "date": "19/6/2023",
+      "isDelivery": false,
+      "id": 16
+    },
+    {
+      "name": "Albert",
+      "store": {
+        "id": 1,
+        "name": "Park Row at Beekman St",
+        "address": "38 Park Row",
+        "city": "New York",
+        "openingHours": "10:00 - 14:00 and 17:00 - 20:30"
+      },
+      "date": "19/6/2023",
+      "isDelivery": false,
+      "id": 17
+    },
+    {
+      "name": "Albert",
+      "store": {
+        "id": 1,
+        "name": "Park Row at Beekman St",
+        "address": "38 Park Row",
+        "city": "New York",
+        "openingHours": "10:00 - 14:00 and 17:00 - 20:30"
+      },
+      "date": "19/6/2023",
+      "isDelivery": false,
+      "id": 18
+    },
+    {
+      "name": "Albert",
+      "store": {
+        "id": 1,
+        "name": "Park Row at Beekman St",
+        "address": "38 Park Row",
+        "city": "New York",
+        "openingHours": "10:00 - 14:00 and 17:00 - 20:30"
+      },
+      "date": "19/6/2023",
+      "isDelivery": false,
+      "id": 19
+    },
+    {
+      "name": "Albert",
+      "store": {
+        "id": 1,
+        "name": "Park Row at Beekman St",
+        "address": "38 Park Row",
+        "city": "New York",
+        "openingHours": "10:00 - 14:00 and 17:00 - 20:30"
+      },
+      "date": "19/6/2023",
+      "isDelivery": false,
+      "id": 20
+    },
+    {
+      "name": "Albert",
+      "store": {
+        "id": 1,
+        "name": "Park Row at Beekman St",
+        "address": "38 Park Row",
+        "city": "New York",
+        "openingHours": "10:00 - 14:00 and 17:00 - 20:30"
+      },
+      "date": "19/6/2023",
+      "isDelivery": false,
+      "id": 21
+    },
+    {
+      "name": "Albert",
+      "store": {
+        "id": 1,
+        "name": "Park Row at Beekman St",
+        "address": "38 Park Row",
+        "city": "New York",
+        "openingHours": "10:00 - 14:00 and 17:00 - 20:30"
+      },
+      "date": "19/6/2023",
+      "isDelivery": false,
+      "id": 22
+    },
+    {
+      "name": "Alberto Clemente",
+      "shippingAddress": "Colonia S Ignacio 16 calle 9-07 Z7 Mixco Apto 806 8º torre F Parque 7",
+      "city": "Guatemala",
+      "date": "19/6/2023",
+      "isDelivery": true,
+      "id": 23
+    },
+    {
+      "name": "Albert",
+      "store": {
+        "id": 1,
+        "name": "Park Row at Beekman St",
+        "address": "38 Park Row",
+        "city": "New York",
+        "openingHours": "10:00 - 14:00 and 17:00 - 20:30"
+      },
+      "date": "19/6/2023",
+      "isDelivery": false,
+      "id": 24
+    },
+    {
+      "name": "Alberto Clemente",
+      "shippingAddress": "Colonia S Ignacio 16 calle 9-07 Z7 Mixco Apto 806 8º torre F Parque 7",
+      "city": "Guatemala",
+      "date": "19/6/2023",
+      "isDelivery": true,
+      "id": 25
     }
   ],
   "detailsOrders": [
@@ -250,6 +411,148 @@
       ],
       "orderId": 11,
       "id": 2
+    },
+    {
+      "details": [
+        {
+          "productId": 1,
+          "productName": "Essential TypeScript 4: From Beginner to Pro",
+          "quantity": 1
+        }
+      ],
+      "orderId": 12,
+      "id": 3
+    },
+    {
+      "details": [
+        {
+          "productId": 1,
+          "productName": "Essential TypeScript 4: From Beginner to Pro",
+          "quantity": 1
+        }
+      ],
+      "orderId": 13,
+      "id": 4
+    },
+    {
+      "details": [],
+      "orderId": 14,
+      "id": 5
+    },
+    {
+      "details": [
+        {
+          "productId": 1,
+          "productName": "Essential TypeScript 4: From Beginner to Pro",
+          "quantity": 1
+        }
+      ],
+      "orderId": 15,
+      "id": 6
+    },
+    {
+      "details": [
+        {
+          "productId": 1,
+          "productName": "Essential TypeScript 4: From Beginner to Pro",
+          "quantity": 1
+        }
+      ],
+      "orderId": 16,
+      "id": 7
+    },
+    {
+      "details": [
+        {
+          "productId": 1,
+          "productName": "Essential TypeScript 4: From Beginner to Pro",
+          "quantity": 1
+        }
+      ],
+      "orderId": 17,
+      "id": 8
+    },
+    {
+      "details": [
+        {
+          "productId": 1,
+          "productName": "Essential TypeScript 4: From Beginner to Pro",
+          "quantity": 1
+        }
+      ],
+      "orderId": 18,
+      "id": 9
+    },
+    {
+      "details": [
+        {
+          "productId": 1,
+          "productName": "Essential TypeScript 4: From Beginner to Pro",
+          "quantity": 1
+        }
+      ],
+      "orderId": 19,
+      "id": 10
+    },
+    {
+      "details": [
+        {
+          "productId": 1,
+          "productName": "Essential TypeScript 4: From Beginner to Pro",
+          "quantity": 1
+        }
+      ],
+      "orderId": 20,
+      "id": 11
+    },
+    {
+      "details": [
+        {
+          "productId": 1,
+          "productName": "Essential TypeScript 4: From Beginner to Pro",
+          "quantity": 1
+        }
+      ],
+      "orderId": 21,
+      "id": 12
+    },
+    {
+      "details": [
+        {
+          "productId": 1,
+          "productName": "Essential TypeScript 4: From Beginner to Pro",
+          "quantity": 1
+        }
+      ],
+      "orderId": 22,
+      "id": 13
+    },
+    {
+      "details": [
+        {
+          "productId": 1,
+          "productName": "Essential TypeScript 4: From Beginner to Pro",
+          "quantity": 1
+        }
+      ],
+      "orderId": 23,
+      "id": 14
+    },
+    {
+      "details": [
+        {
+          "productId": 1,
+          "productName": "Essential TypeScript 4: From Beginner to Pro",
+          "quantity": 1
+        }
+      ],
+      "orderId": 24,
+      "id": 15
+    },
+    {
+      "details": [],
+      "orderId": 25,
+      "id": 16
     }
   ]
 }
