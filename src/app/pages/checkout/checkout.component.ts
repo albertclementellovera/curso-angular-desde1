@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { tap } from 'rxjs';
+import { NgForm } from '@angular/forms';
+import { switchMap, tap } from 'rxjs';
 import { Store } from 'src/app/shared/interfaces/stores.interface';
 import { DataService } from 'src/app/shared/services/data.service';
-
+import { Product } from '../products/interfaces/product.interface';
+import { Details, Order } from 'src/app/shared/interfaces/order.interface';
+import { ShoppingCartService } from './../../shared/services/shopping-cart.service';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -15,22 +18,42 @@ export class CheckoutComponent implements OnInit{
     shippingAddress: '',
     city: ''
   };
-  isDelibery: boolean=false;
+  isDelivery = false;
+  cart: Product[] = [];
   stores: Store[] = []
-  constructor(private dataSvc: DataService) {}
+  constructor(private dataSvc: DataService,private shoppingCartSvc: ShoppingCartService) {}
 
   ngOnInit(): void{
     this.getStores();
+    this.getDataCart();
+    this.prepareDetails();
   }
 
   onPickupOrDelivery(value: boolean): void{
-    this.isDelibery = value;
+    this.isDelivery = value;
   }
 
-  onsubmit():void{
-    console.log('Guardar');
+  onsubmit({value: formData}: NgForm):void{
+    console.log('Guardar',formData);
+   const data: Order = {
+      ...formData,
+     date: this.getCurrentDay(),
+     isDelivery: this.isDelivery
+    }
+    this.dataSvc.saveOrder(data)
+     .pipe(
+        tap(res => console.log('Order ->', res)),
+        switchMap((order) => {
+          const orderId = order.id;
+          const details = this.prepareDetails();
+          return this.dataSvc.saveDetailsOrder({ details, orderId });
+        }),
+        tap(res => console.log('Finish ->',res)),
+      )
+      .subscribe();
   }
-  private getStores():void{
+
+private getStores():void{
     this.dataSvc.getStores()
     .pipe(
       tap((stores:Store[]) => this.stores = stores)
@@ -38,4 +61,24 @@ export class CheckoutComponent implements OnInit{
     .subscribe()
   }
 
+private getCurrentDay(): string {
+    return new Date().toLocaleDateString();
+  }
+
+private prepareDetails(): Details[] {
+    const details: Details[] = [];
+    this.cart.forEach((product: Product) => {
+      const { id: productId, name: productName, qty: quantity, stock } = product;
+      details.push({ productId, productName, quantity });
+    })
+    return details;
+  }
+
+private getDataCart(): void {
+    this.shoppingCartSvc.cartAction$
+      .pipe(
+        tap((products: Product[]) => this.cart = products)
+      )
+      .subscribe()
+  }
 }
